@@ -14,7 +14,8 @@
 		"url": "https://github.com/romualdr/workshop"
 	},
 	"dependencies": {
-		"express": "3.x"
+		"express": "3.x",
+		"colors": "*"
 	},
 	"engines": {
 		"node": ">= 0.10.5"

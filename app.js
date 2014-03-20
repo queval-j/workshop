@@ -1,5 +1,7 @@
 var	express = require('express'),
 	app = express(),
+	colors = require('colors'),
+	dataManager = require('./lib/DataManager'),
 	port;
 
 // Configure the server with general information
@@ -20,5 +22,7 @@ app.configure('production', function () {
 	port = 80;
 });
 
-app.listen(port); // start the server
-console.log('Server is now listening on port', port);
+dataManager.init(function () {
+	app.listen(port); // start the server
+	console.log('Server is now listening on port'.grey, (port+"").green);
+});
