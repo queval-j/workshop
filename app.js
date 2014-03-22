@@ -22,6 +22,10 @@ app.configure('production', function () {
 	port = 80;
 });
 
+app.all('*', function (req, res) {
+	res.redirect('/404');
+});
+
 dataManager.init(function () {
 	app.listen(port); // start the server
 	console.log('Server is now listening on port'.grey, (port+"").green);
