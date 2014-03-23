@@ -6,7 +6,7 @@ SDK.Template = function () {
 };
 
 SDK.Template.prototype.get = function (url, callback) {
-	if (this.__templates[url]) return callback(null, this.__templates['url']);
+	if (this.__templates[url]) return callback(null, this.__templates[url]);
 	var self = this;
 	$.ajax({
 		"url": url,

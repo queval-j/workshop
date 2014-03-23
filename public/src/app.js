@@ -6,6 +6,10 @@ window.app = {
 	Collections: {},
 	Router: null,
 	$content: $('#content'),
+	$menus: $('ul.nav.masthead-nav li'),
+	getMenu: function () {
+		return (this.$menus);
+	},
 	start: function () {
 		this.e = _.extend({}, Backbone.Events);
 		SDK.Api.setUrl(this.url);

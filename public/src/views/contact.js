@@ -1,10 +1,10 @@
-app.Views.Home = app.Views.Abstract.extend({
+app.Views.Contact = app.Views.Abstract.extend({
 	init: function (opts) {
 		this._alreadyLoaded = false;
 	},
-	_dataId: "page-home",
+	_dataId: "page-contact",
 	loadTemplate: function (callback) {
-		SDK.Template.get('/templates/home.html', function (err, res) {
+		SDK.Template.get('/templates/contact.html', function (err, res) {
 			if (err) return alert('Une erreur s\'est produite');
 			callback(res);
 		});

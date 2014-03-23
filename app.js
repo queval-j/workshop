@@ -22,8 +22,16 @@ app.configure('production', function () {
 	port = 80;
 });
 
+app.all('/api/*', function (req, res) {
+	res.send({
+		"error": {
+			"reason": "Method not implemented"
+		}
+	});
+});
+
 app.all('*', function (req, res) {
-	res.redirect('/404');
+	res.redirect('/#error/404');
 });
 
 dataManager.init(function () {

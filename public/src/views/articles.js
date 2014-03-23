@@ -1,9 +1,12 @@
 app.Views.Articles = app.Views.Abstract.extend({
 	init: function (opts) {
 		this._alreadyLoaded = false;
+		this.listingTmpl = null;
+		this.contentTmpl = null;
 	},
+	_dataId: "page-articles",
 	loadTemplate: function (callback) {
-		SDK.Template.get('/templates/home.html', function (err, res) {
+		SDK.Template.get('/templates/article.html', function (err, res) {
 			if (err) return alert('Une erreur s\'est produite');
 			callback(res);
 		});
@@ -16,9 +19,13 @@ app.Views.Articles = app.Views.Abstract.extend({
 			return callback();
 		}
 		this.loadTemplate(function (html) {
-			self.app.$content.html(html);
+			self.$el.html(html);
+			self.listingTmpl = self.$('#articleListing').html();
+			self.contentTmpl = self.$('#articleContent').html();
+			self.app.$content.append(self.$el);
 			self._alreadyLoaded = true;
-			callback();
+			callback.apply(self, []);
 		});
+		return (this);
 	}
 });

@@ -159,3 +159,11 @@ body {
     width: 700px;
   }
 }
+
+.nav.nav-pills.nav-stacked a:hover {
+  color: #000;
+}
+
+.articles .content {
+  text-align: justify;
+}

@@ -2,6 +2,7 @@ app.Views.Abstract = Backbone.View.extend({
 	__pages: {
 		_visible: true
 	},
+	_dataId: "",
 	_location: [],
 	initialize: function (opts) {
 		var self = this;
@@ -11,8 +12,12 @@ app.Views.Abstract = Backbone.View.extend({
 				self.hide();
 		});
 		this.init(opts);
+		this.hide();
 	},
+	_show: $.noop,
 	show: function () {
+		this.app.getMenu().removeClass('active');
+		$('li[data-id="'+this._dataId+'"]', this.app.getMenu().parent()).addClass('active');
 		this._show();
 		if (this.__pages._visible)
 			return;

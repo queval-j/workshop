@@ -4,7 +4,9 @@ app.Router = Backbone.Router.extend({
 	},
 	routes: {
 		'': 'home',
-		'articles': 'articles'
+		'articles': 'articles',
+		'contact': 'contact',
+		'error/:code': "error"
 	},
 	home: function () {
 		if (!this.app.views.Home) {
@@ -13,22 +15,51 @@ app.Router = Backbone.Router.extend({
 				'app': this.app
 			}).render(function () {
 				SDK.Overlay.hide();
+				this.show();
 			});
 			return;
 		}
 		this.app.views.Home.show();
 	},
 	articles: function () {
-		if (!this.app.views.Home) {
+		if (!this.app.views.Articles) {
 			SDK.Overlay.show();
 			this.app.views.Articles = new this.app.Views.Articles({
 				'app': this.app
-			}).render(function () {
-				console.log('Article loaded');
+			})
+			.render(function () {
 				SDK.Overlay.hide();
+				this.show();
 			});
 			return;
 		}
 		this.app.views.Articles.show();
+	},
+	contact: function () {
+		if (!this.app.views.Contact) {
+			SDK.Overlay.show();
+			this.app.views.Contact = new this.app.Views.Contact({
+				'app': this.app
+			})
+			.render(function () {
+				SDK.Overlay.hide();
+				this.show();
+			});
+			return;
+		}
+		this.app.views.Contact.show();
+	},
+	error: function (code) {
+		if (!this.app.views.Error) {
+			SDK.Overlay.show();
+			this.app.views.Error = new this.app.Views.Error({
+				'app': this.app
+			}).render(function () {
+				SDK.Overlay.hide();
+				this.show();
+			});
+			return;
+		}
+		this.app.views.Error.setCode(code || 404).show();
 	}
 });
