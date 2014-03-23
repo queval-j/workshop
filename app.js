@@ -1,6 +1,7 @@
 var	express = require('express'),
 	app = express(),
 	colors = require('colors'),
+	apiArticle = require('./api/articles.js'),
 	dataManager = require('./lib/DataManager'),
 	port;
 
@@ -21,6 +22,8 @@ app.configure('development', function () {
 app.configure('production', function () {
 	port = 80;
 });
+
+apiArticle(app);
 
 app.all('/api/*', function (req, res) {
 	res.send({
