@@ -64,5 +64,5 @@ var articles = {
 module.exports = function (app) {
 	for (var key in articles) {
 		articles[key](app);
-	};
+	}
 };
