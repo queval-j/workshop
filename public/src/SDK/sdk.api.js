@@ -8,7 +8,7 @@ SDK.Api.prototype.setUrl = function (url) {
 
 SDK.Api.prototype._request = function (userOpts, callback) {
 	var opts = {
-		'url': this._baseUrl+userOpts['user'],
+		'url': this._baseUrl+userOpts['url'],
 		'type': userOpts['type'] || 'GET',
 		'data': userOpts['data'] || {},
 		'dataType': 'application/json'
