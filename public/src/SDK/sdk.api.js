@@ -11,7 +11,7 @@ SDK.Api.prototype._request = function (userOpts, callback) {
 		'url': this._baseUrl+userOpts['url'],
 		'type': userOpts['type'] || 'GET',
 		'data': userOpts['data'] || {},
-		'dataType': 'application/json'
+		'dataType': 'json'
 	};
 	$.ajax(opts)
 	.done(function (res) {
